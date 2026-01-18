@@ -63,10 +63,23 @@ function NavBar() {
 
   return (
     <nav className="nav-bar">
-      <div className="logo">
-        <span role="img">🍿</span>
-        <h1>usePopcorn</h1>
-      </div>
+      <Logo />
+      <Search query={query} setQuery={setQuery} />
+      <FoundResults />
+    </nav>
+  );
+}
+function Logo() {
+  return (
+    <div className="logo">
+      <span role="img">🍿</span>
+      <h1>usePopcorn</h1>
+    </div>
+  );
+}
+function Search({ query, setQuery }) {
+  return (
+    <div>
       <input
         className="search"
         type="text"
@@ -74,10 +87,14 @@ function NavBar() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <p className="num-results">
-        Found <strong>X</strong> results
-      </p>
-    </nav>
+    </div>
+  );
+}
+function FoundResults() {
+  return (
+    <p className="num-results">
+      Found <strong>X</strong> results
+    </p>
   );
 }
 function Main() {
